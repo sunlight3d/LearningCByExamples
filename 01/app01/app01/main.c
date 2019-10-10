@@ -10,20 +10,23 @@ struct Book {
 };
 
 int N;//bien toan cuc, co tac dung ben trong main.c
-struct Book *input(){
+struct Book* input(){
     printf("Numbers of books : ");scanf("%d", &N);
     struct Book *book = (struct Book *)malloc(N * sizeof(struct Book));
     int i;
     for (i = 0; i < N; i++){
-        printf("Book number %d :\n", i+1);
+        INPUT_ONE: printf("Book number %d :\n", i+1);
         printf("Enter book's name : \n");scanf("%s", (*(book+i)).name);
         printf("Enter book's year : \n");scanf("%d", &((*(book+i)).year));
+        if((*(book+i)).year <= 2000 || (*(book+i)).price < 100 || (*(book+i)).price > 200 ) { //year must be > 2000, price >= 100, price <= 200,
+            goto INPUT_ONE;
+        }
         printf("Enter book's publisher : \n");scanf("%s", (*(book+i)).publisher);
         printf("Enter book's price : \n");scanf("%f", &(*(book+i)).price);
     }
     return book;
 }
-void sort(struct Book *book){
+void sort(struct Book* book){
     int i, j;
     struct Book *ptr = book;
     for(i = 0; i < N; i++){
