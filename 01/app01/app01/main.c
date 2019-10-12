@@ -36,7 +36,8 @@ struct Book* input(){
 }
 
 void display(struct Book *book) {
-    int i;
+    int i, numberOfBooks;
+    numberOfBooks = 0;
     printf("+----------------------------------------------+\n");
     printf("|Name       |Year       |Publisher  |Price     |\n");
     printf("+----------------------------------------------+\n");
@@ -46,8 +47,10 @@ void display(struct Book *book) {
         printf("|%-11d", (*(book+i)).year);
         printf("|%-11s", (*(book+i)).publisher);
         printf("|%-10.2f|\n", (*(book+i)).price);
+        numberOfBooks++;
     }
     printf("+----------------------------------------------+\n");
+    printf("%d book(s) found\n", numberOfBooks);
 }
 void sort(struct Book* book){
     int i, j;
@@ -125,39 +128,30 @@ void find(struct Book *book) {
     display(bookResults);
 }
 void save(struct Book *book){
-    char fileName[100];
-    char filePath[250];
+    char fileName[250];
     printf("Enter file name : "); scanf("%s", fileName);
-    strcat(filePath, "/Users/hoangnd/Documents/tutorials/AptechPTTH/"); //MacOS+Linux
-    //strcat(filePath, "D:\\");//Windows
-    strcat(filePath, fileName);
-    FILE *file = fopen(filePath,"wb"); // w for write, b for binary
+    FILE *file = fopen(fileName,"wb"); // w for write, b for binary
     if (!file) {
         printf("Cannot open file %s\n", fileName);
         exit(1);
     } else {
         fwrite(book, sizeof(struct Book *), N, file);
+        fclose(file);
+        printf("Data is saved successfully \n");
     }
-    fclose(file);
-    printf("Save finished\n");
 }
 
 void openFile(struct Book *book) {
-    char fileName[100];
-    char filePath[250];
+    char fileName[250];
     printf("Enter file name to open : "); scanf("%s", fileName);
-    strcat(filePath, "/Users/hoangnd/Documents/tutorials/AptechPTTH/"); //MacOS+Linux
-    //strcat(filePath, "D:\\");//Windows
-    strcat(filePath, fileName);
-    FILE *file = fopen(filePath,"rb"); // w for write, b for binary
-    
+    FILE *file = fopen(fileName,"rb"); // w for write, b for binary
     if (!file) {
         printf("Cannot open file %s\n", fileName);
-        exit(1);
     } else {
         fread(book, sizeof(struct Book), N, file);
+        display(book);
+        fclose(file);
     }
-    fclose(file);
 }
 int main(int argc, char * argv[]) {
     struct Book *book = NULL;
@@ -195,7 +189,7 @@ int main(int argc, char * argv[]) {
             goto LABEL2;
             break;
         case '6':
-            save(book);
+            openFile(book);
             goto LABEL2;
             break;
         case '7':
