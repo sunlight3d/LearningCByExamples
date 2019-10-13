@@ -3,8 +3,8 @@
 #include <stdlib.h>
 
 struct Book {
-    char name[120];
-    char publisher[150];
+    char name[220];
+    char publisher[250];
     int year;
     float price;
 };
