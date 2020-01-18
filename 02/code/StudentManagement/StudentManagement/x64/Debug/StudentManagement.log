@@ -1,0 +1,6 @@
+﻿  main.c
+C:\Users\User\Documents\code\LearningCByExamples\02\code\StudentManagement\StudentManagement\main.c(37,45): warning C4013: 'getsn' undefined; assuming extern returning int
+C:\Users\User\Documents\code\LearningCByExamples\02\code\StudentManagement\StudentManagement\main.c(39,11): warning C4013: 'gets' undefined; assuming extern returning int
+C:\Users\User\Documents\code\LearningCByExamples\02\code\StudentManagement\StudentManagement\main.c(39,41): warning C4047: '!=': 'int' differs in levels of indirection from 'void *'
+main.obj : error LNK2019: unresolved external symbol getsn referenced in function input
+C:\Users\User\Documents\code\LearningCByExamples\02\code\StudentManagement\x64\Debug\StudentManagement.exe : fatal error LNK1120: 1 unresolved externals

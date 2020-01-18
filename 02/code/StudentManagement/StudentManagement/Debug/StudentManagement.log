@@ -1,0 +1,5 @@
+﻿  main.c
+C:\Users\User\Documents\code\LearningCByExamples\02\code\StudentManagement\StudentManagement\main.c(37,44): warning C4013: 'gets' undefined; assuming extern returning int
+C:\Users\User\Documents\code\LearningCByExamples\02\code\StudentManagement\StudentManagement\main.c(39,41): warning C4047: '!=': 'int' differs in levels of indirection from 'void *'
+C:\Users\User\Documents\code\LearningCByExamples\02\code\StudentManagement\StudentManagement\main.c(132,29): warning C4047: '!=': 'int' differs in levels of indirection from 'void *'
+  StudentManagement.vcxproj -> C:\Users\User\Documents\code\LearningCByExamples\02\code\StudentManagement\Debug\StudentManagement.exe
