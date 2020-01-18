@@ -1,4 +1,7 @@
 # Prerequisites
+.log
+Debug
+Debug/
 *.d
 video
 video/
