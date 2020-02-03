@@ -8,6 +8,7 @@
 
 #include <iostream>
 #include "Reader.hpp"
+#include "BookManagement.hpp"
 
 using namespace std;
 int main(int argc, const char * argv[]) {
@@ -17,5 +18,10 @@ int main(int argc, const char * argv[]) {
     Reader *mrA = new Reader("A", "Shanghai, China", "+86-123345668", TEACHER);
     mrHoang->show();
     mrA->show();
+    BookManagement bookManagement;
+    bookManagement.inputBooks();
+    bookManagement.saveBooks();
+    bookManagement.displayBooks();
+            
     return 0;
 }

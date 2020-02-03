@@ -27,6 +27,10 @@ public:
     string author;
     int yearOfPublication;
     //constructor
+    Book() {
+        name = "";
+        author = "";
+    }
     Book(string name, string author, int yearOfPublication);
     //friend class
     friend class BookManagement;
@@ -39,5 +43,6 @@ public:
         Book* newBook = new Book(name, author, yearOfPublication);
         return newBook;
     }
+    void show();
 };
 #endif /* Book_hpp */

@@ -15,4 +15,10 @@ Book::Book(string name, string author, int yearOfPublication) {
     this->author = author;
     this->yearOfPublication = yearOfPublication;
 };
-
+void Book::show() {
+    cout<<"Book's detail:"<<endl;
+    cout<<"Code: "<<this->code<<",";
+    cout<<"Name: "<<this->name<<",";
+    cout<<"Author: "<<this->author<<",";
+    cout<<"yearOfPublication: "<<this->yearOfPublication<<endl;
+};
