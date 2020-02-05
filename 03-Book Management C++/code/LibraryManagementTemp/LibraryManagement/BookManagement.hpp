@@ -20,12 +20,13 @@ private:
     vector<class Reader> readers;
     string bookFile, readerFile, readerBookfile;
 public:
-    void inputBooks();
+    void insertBook(Book newBook);
+    void readBooksFromFile();
     void displayBooks(); //read file & display array of Books
     void saveBooks();
     //array of Readers
-    void inputReaders();
     void displayReaders();//read file & display array of Readers
+    void readReadersFromFile();
     void saveReaders();
     //Reader borrows books
     void sortBooksByReader();

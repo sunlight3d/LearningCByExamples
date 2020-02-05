@@ -11,26 +11,32 @@
 
 #include <stdio.h>
 #include "Person.hpp"
+#include "Book.hpp"
 enum ReaderType {
-    STUDENT,
-    MASTER,
-    TEACHER
+    STUDENT = 0,
+    MASTER = 1,
+    TEACHER = 2
 };
 //Reader is "derived class"
 class Reader:Person {
 private:
     ReaderType type;//“student”, “master”, “teacher”
     int libraryCode;
+    vector<class Book> books; //1 reader "borrow" many books
 //How to implement auto-increment ?
 public:
     static int numberOfObjects;
     //constructor
+    Reader() {
+        type = STUDENT;
+    }
     Reader(string name, string address, string phoneNumber, ReaderType type):
         Person(name, address, phoneNumber) {
             this->numberOfObjects++;
             this->libraryCode = numberOfObjects;
-            this->type = type;
+            this->type = type;            
     }
+    
     //function to show detail object
     void show() override;
     //friend class

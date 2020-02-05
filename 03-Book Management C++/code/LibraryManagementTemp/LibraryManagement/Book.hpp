@@ -21,11 +21,11 @@ enum BookSubject {
 class Book {
 private:
     int code;//auto increment
-public:
-    static int numberOfObjects;
     string name;
     string author;
     int yearOfPublication;
+public:
+    static int numberOfObjects;
     //constructor
     Book() {
         name = "";
@@ -33,16 +33,7 @@ public:
     }
     Book(string name, string author, int yearOfPublication);
     //friend class
-    friend class BookManagement;
-    static Book* inputBook() {
-        string name, author;
-        int yearOfPublication;
-        cout<<"Enter book's name : ";cin>>name;
-        cout<<"Enter book's author : ";cin>>author;
-        cout<<"Enter book's publication year : ";cin>>yearOfPublication;
-        Book* newBook = new Book(name, author, yearOfPublication);
-        return newBook;
-    }
+    friend class BookManagement;    
     void show();
 };
 #endif /* Book_hpp */

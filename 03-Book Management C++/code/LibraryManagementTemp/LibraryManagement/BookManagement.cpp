@@ -8,33 +8,35 @@
 
 #include "BookManagement.hpp"
 #include <fstream>
-void BookManagement::inputBooks() {
-    int numberOfBooks;
-    cout<<"Enter number of books : ";cin>>numberOfBooks;
-    for (int i = 0; i < numberOfBooks; i++) {
-        Book* book = Book::inputBook();
-        this->books.push_back(*book);
-    }
-}
-void BookManagement::displayBooks() {
+
+void BookManagement::readBooksFromFile() {
     // Object to read from file
     ifstream file;
+    file.open(this->bookFile, ios:: binary);
     this->books.clear();//remove objects
-    Book currentBook;
-    file.read((char*)&currentBook, sizeof(currentBook));
+    Book *currentBook = new Book();
+    file.read((char*)currentBook, sizeof(*currentBook));
     while (!file.eof()) {
-        this->books.push_back(currentBook);
-        file.read((char*)&currentBook, sizeof(currentBook));
+        this->books.push_back(*currentBook);
+        file.read((char*)currentBook, sizeof(*currentBook));
     }
+    file.close();
+}
+void BookManagement::insertBook(Book newBook) {
+    this->books.push_back(newBook);
+}
+void BookManagement::displayBooks() {
     for (int i = 0; i < this->books.size(); i++) {
         Book book = this->books[i];
         book.show();
     }
+    
 }
 void BookManagement::saveBooks() {
     ofstream file;
     cout<<"Enter file name to save books : ";cin>>this->bookFile;
-    file.open(this->bookFile, ios::app | ios:: binary);
+    //out: for write new, app = append
+    file.open(this->bookFile, ios:: binary);
     if(file){
         for (int i = 0; i < this->books.size(); i++) {
             Book book = this->books[i];
@@ -46,13 +48,38 @@ void BookManagement::saveBooks() {
         cout<<"Cannot open file : "<<this->bookFile<<" to save"<<endl;
     }
 }
-/*
 
-void BookManagement::saveBooks();
-//array of Readers
-void BookManagement::inputReaders();
-void BookManagement::displayReaders();//read file & display array of Readers
-void BookManagement::saveReaders();
-//Reader borrows books
-void BookManagement::sortBooksByReader();
-*/
+void BookManagement::readReadersFromFile() {
+    // Object to read from file
+    ifstream file;
+    this->readers.clear();//remove objects
+    Reader currentReader;
+    file.read((char*)&currentReader, sizeof(currentReader));
+    while (!file.eof()) {
+        this->readers.push_back(currentReader);
+        file.read((char*)&currentReader, sizeof(currentReader));
+    }
+}
+
+void BookManagement::displayReaders() {
+    for (int i = 0; i < this->readers.size(); i++) {
+        Reader reader = this->readers[i];
+        reader.show();
+    }
+    
+}
+void BookManagement::saveReaders() {
+    ofstream file;
+    cout<<"Enter file name to save readers : ";cin>>this->readerFile;
+    file.open(this->readerFile, ios::app | ios:: binary);
+    if(file){
+        for (int i = 0; i < this->readers.size(); i++) {
+            Reader reader = this->readers[i];
+            file.write((char*)&reader, sizeof(reader));
+        }
+        file.close();
+        cout<<"Save readers successfully to file "<<this->readerFile<<endl;
+    }else {
+        cout<<"Cannot open file : "<<this->readerFile<<" to save"<<endl;
+    }
+}

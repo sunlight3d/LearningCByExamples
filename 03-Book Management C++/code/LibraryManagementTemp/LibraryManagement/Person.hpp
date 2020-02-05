@@ -14,10 +14,13 @@
 using namespace std;
 class Person {
 private:
-    string name;
-    string address;
-    string phoneNumber;
+    string name, address, phoneNumber;
 public:
+    Person() {
+        name = "";
+        string address;
+        phoneNumber = "";
+    }
     //getter
     string getName();
     string getAddress();
