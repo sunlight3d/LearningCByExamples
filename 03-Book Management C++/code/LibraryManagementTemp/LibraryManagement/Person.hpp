@@ -33,6 +33,8 @@ public:
     virtual void show();
     //constructor
     Person(string name, string address, string phoneNumber);
+    //friend class
+    friend class BookManagement;
 };
 
 

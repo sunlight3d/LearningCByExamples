@@ -13,3 +13,6 @@ void Reader::show() {
     cout<<"Library code: "<<this->libraryCode<<endl;
     cout<<"Reader type: "<<this->type<<endl;
 }
+void Reader::borrow(Book *book) {
+    this->books.push_back(book);
+}

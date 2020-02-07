@@ -16,20 +16,22 @@
 using namespace std;
 class BookManagement{
 private:
-    vector<class Book> books;
-    vector<class Reader> readers;
+    vector<class Book*> books;
+    vector<class Reader*> readers;
     string bookFile, readerFile, readerBookfile;
 public:
-    void insertBook(Book newBook);
+    void insertBook(Book *newBook);
     void readBooksFromFile();
     void displayBooks(); //read file & display array of Books
     void saveBooks();
     //array of Readers
-    void displayReaders();//read file & display array of Readers
+    void insertReader(Reader *newReader);
     void readReadersFromFile();
+    void displayReaders();//read file & display array of Readers
     void saveReaders();
     //Reader borrows books
-    void sortBooksByReader();
+    void sortReadersByNames();
+    void sortReadersByBooks();
 };
 
 #endif /* BookManagement_hpp */

@@ -22,7 +22,7 @@ class Reader:Person {
 private:
     ReaderType type;//“student”, “master”, “teacher”
     int libraryCode;
-    vector<class Book> books; //1 reader "borrow" many books
+    vector<class Book*> books; //1 reader "borrow" many books
 //How to implement auto-increment ?
 public:
     static int numberOfObjects;
@@ -39,6 +39,7 @@ public:
     
     //function to show detail object
     void show() override;
+    void borrow(Book *book);
     //friend class
     friend class BookManagement;
 };
